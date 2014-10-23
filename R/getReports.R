@@ -8,7 +8,7 @@
 getReports <- function(path, recursive=TRUE){
   ## get list of all report files
   reportFiles <- dir(path = path, pattern="report$", recursive=recursive)
-  prefix <- paste(path, dirname(reportFiles), sep="")
+  prefix <- paste(path, dirname(reportFiles), sep="/")
   ## set up empty data frames
   reports <- read.table(paste(path,reportFiles[1],sep="/"), sep="\t", header=TRUE, stringsAsFactors=FALSE)
   reports <- reports[-1,]
