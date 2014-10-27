@@ -37,11 +37,13 @@ genomeplot <- function(segments, chrsizes){
     scale_color_manual(values=c('#D55E00','#0072B2', "000000")) + 
     coord_cartesian(ylim = c(-1.5, 4)) + ylab("Log(T/N)") + xlab("Chromosome") + 
     geom_vline(xintercept=chrsizes$cumend, linetype="dotted", colour="gray50") + 
-    geom_hline(yintercept=log2(c(1/2, 3/2, 4/2, 5/2, 6/2)), linetype="dotted", colour=c("#0072B2", "#D55E00", "#D55E00", "#D55E00", "#D55E00")) + 
+    geom_hline(yintercept=log2(c(1/2, 3/2, 4/2, 5/2, 6/2)), linetype="dotted", 
+               colour=c("#0072B2", "#D55E00", "#D55E00", "#D55E00", "#D55E00")) + 
     annotate("text", x=as.numeric(chrsizes$labelpos), y=-1.3, label=chrsizes$chr, size=4, colour="gray50") +
     theme(axis.text.x=element_blank(),axis.ticks.x=element_blank(), panel.grid=element_blank()) + 
     ggtitle("Copy Number Profile") + 
-    geom_segment(aes(x = 0, y = 0, xend = max(chrsizes$cumend), yend = 0), size=.2, colour="gray10")
+    geom_segment(aes(x = 0, y = 0, xend = max(chrsizes$cumend[ is.finite(chrsizes$cumend)] ), yend = 0), 
+                 size=.2, colour="gray10")
   )
   #annotate("text", x=max(segments$cumend)+1e7, y=log2(c(1/2, 3/2, 4/2, 5/2, 6/2)), 
   #           label=c("1", "3", "4", "5", "6"))
