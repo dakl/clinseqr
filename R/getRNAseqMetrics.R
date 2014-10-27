@@ -1,10 +1,12 @@
 #' Get normalized gene body coverage for reports
 #' 
-#' @param reports data frame with reports (commonly from \code(getReports()) )
+#' @param reports data frame with reports
 #' @return A data frame with normalized gene body coverage for all samples
 #' @examples
-#' dat <- getRNAseqMetrics(reports)
-#' ggplot(subset(dat, METRIC=="PCT_RIBOSOMAL_BASES"), aes(x=DataReportID, y=VALUE, fill=DataReportID)) + geom_bar(stat="identity")
+#' #dat <- getRNAseqMetrics(reports)
+#' #ggplot(subset(dat, METRIC=="PCT_RIBOSOMAL_BASES"), 
+#' #       aes(x=DataReportID, y=VALUE, fill=DataReportID)) + 
+#' #geom_bar(stat="identity")
 getRNAseqMetrics <- function(reports){
   readM <- function(f){
     cmd <- paste("grep -A 2 PF_BASES", f)

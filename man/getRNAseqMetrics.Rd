@@ -6,7 +6,7 @@
 getRNAseqMetrics(reports)
 }
 \arguments{
-\item{reports}{data frame with reports (commonly from \code(getReports()) )}
+\item{reports}{data frame with reports}
 }
 \value{
 A data frame with normalized gene body coverage for all samples
@@ -15,7 +15,9 @@ A data frame with normalized gene body coverage for all samples
 Get normalized gene body coverage for reports
 }
 \examples{
-dat <- getRNAseqMetrics(reports)
-ggplot(subset(dat, METRIC=="PCT_RIBOSOMAL_BASES"), aes(x=DataReportID, y=VALUE, fill=DataReportID)) + geom_bar(stat="identity")
+#dat <- getRNAseqMetrics(reports)
+#ggplot(subset(dat, METRIC=="PCT_RIBOSOMAL_BASES"),
+#       aes(x=DataReportID, y=VALUE, fill=DataReportID)) +
+#geom_bar(stat="identity")
 }
 

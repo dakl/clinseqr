@@ -7,7 +7,8 @@ Author: Daniel Klevebring
 Maintainer: Daniel Klevebring <daniel.klevebring@gmail.com>
 Depends:
     R (>= 3.0.0),
-    data.table
+    data.table,
+    ggplot2
 Description: Functions in this package mostly summarize reports and data types
     in diffenent ways.
 License: MIT

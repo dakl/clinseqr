@@ -6,7 +6,7 @@
 getCombinedMaf(reports)
 }
 \arguments{
-\item{reports}{data frame with reports (commonly from \code(getReports()) )}
+\item{reports}{data frame with reports}
 }
 \value{
 A combined MAF data table
@@ -15,6 +15,6 @@ A combined MAF data table
 Get a combined MAF from a set of reports
 }
 \examples{
-getCombinedMaf(reports)
+# getCombinedMaf(reports)
 }
 

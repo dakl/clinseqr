@@ -1,8 +1,8 @@
 #' Print a dot every k loops
 #' 
 #' @param k looping paramters
-#' @param every print a symbol when k mod every == 0 (default 100)
-#' @param symbol String to print (default \code(.))
+#' @param every print a symbol when k mod every == 0, default 100
+#' @param symbol String to print, default \code{.}
 #' @examples
 #' for( k in 1:1000 ){ 
 #'   dot(k)

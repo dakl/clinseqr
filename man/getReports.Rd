@@ -17,6 +17,6 @@ A data frame with reports
 Get a data frame with all reports found in path
 }
 \examples{
-getReports("/home/Crisp/clinseq/BREASTv4")
+# getReports("/home/Crisp/clinseq/BREASTv4")
 }
 

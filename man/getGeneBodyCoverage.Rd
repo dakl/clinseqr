@@ -6,7 +6,7 @@
 getGeneBodyCoverage(reports)
 }
 \arguments{
-\item{reports}{data frame with reports (commonly from \code(getReports()) )}
+\item{reports}{data frame with reports}
 }
 \value{
 A data frame with normalized gene body coverage for all samples
@@ -15,7 +15,7 @@ A data frame with normalized gene body coverage for all samples
 Get normalized gene body coverage for reports
 }
 \examples{
-dat <- getGeneBodyCoverage(reports)
-ggplot(dat, aes(x=NORM_POS, y=NORM_COV, colour=DataReportID)) + geom_line()
+# dat <- getGeneBodyCoverage(reports)
+# ggplot(dat, aes(x=NORM_POS, y=NORM_COV, colour=DataReportID)) + geom_line()
 }
 

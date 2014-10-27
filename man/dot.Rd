@@ -8,9 +8,9 @@ dot(k, every = 100, symbol = ".")
 \arguments{
 \item{k}{looping paramters}
 
-\item{every}{print a symbol when k mod every == 0 (default 100)}
+\item{every}{print a symbol when k mod every == 0, default 100}
 
-\item{symbol}{String to print (default \code(.))}
+\item{symbol}{String to print, default \code{.}}
 }
 \description{
 Print a dot every k loops

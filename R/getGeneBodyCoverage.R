@@ -1,10 +1,10 @@
 #' Get normalized gene body coverage for reports
 #' 
-#' @param reports data frame with reports (commonly from \code(getReports()) )
+#' @param reports data frame with reports
 #' @return A data frame with normalized gene body coverage for all samples
 #' @examples
-#' dat <- getGeneBodyCoverage(reports)
-#' ggplot(dat, aes(x=NORM_POS, y=NORM_COV, colour=DataReportID)) + geom_line()
+#' # dat <- getGeneBodyCoverage(reports)
+#' # ggplot(dat, aes(x=NORM_POS, y=NORM_COV, colour=DataReportID)) + geom_line()
 getGeneBodyCoverage <- function(reports){
   dat <- makeEmptyDataTable(c("NORM_POS", "NORM_COV", "DataReportID"))
   for(k in 1:nrow(reports)){ #k <- 3
