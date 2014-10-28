@@ -2,7 +2,7 @@
 #' 
 #' @param segments Data frame with segments from qdnaseq. Must include column chr, start, end and segmented, and *prob.
 #' @param chrsizes Data frame with chromosome sizes. 
-#' @return A combined MAF data table
+#' @return A ggplot object
 #' @examples
 #' # genomeplot(segments, chrsizes)
 genomeplot <- function(segments, chrsizes){

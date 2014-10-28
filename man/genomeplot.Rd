@@ -11,7 +11,7 @@ genomeplot(segments, chrsizes)
 \item{chrsizes}{Data frame with chromosome sizes.}
 }
 \value{
-A combined MAF data table
+A ggplot object
 }
 \description{
 plot a copy number profile
