@@ -1,11 +1,12 @@
 #' Make a table of CN summary stats per chromosome arm
 #' 
 #' @param segments Data table with segments from qdnaseq.
-#' @param arms Data table with chromosome arms. 
+#' @param bandsFile Path to cytobands.txt (see repo dakl/genome at github)
 #' @return A summary table per chromosome arm
 #' @examples
-#' #getCNArmSummary(segments, bandsFile = "~/genome/cytobands.txt")
+#' #getCNArmSummary(segments, bandsFile = "cytobands.txt")
 getCNArmSummary <- function(segments, bandsFile){
+  segments <- as.data.table(segments)
   bands <- fread(bandsFile)
   setnames(bands, names(bands), c("chr", "start", "end", "band", "color"))
   
@@ -14,7 +15,7 @@ getCNArmSummary <- function(segments, bandsFile){
   
   PROBCUTOFF <- 0.9 
   
-  tab <- data.table(arm=NA, meanCN=NA, fracAMP=NA, fracDEL=NA)
+  tab <- data.table(arm=NA, meanRatio=NA, fracAMP=NA, fracDEL=NA)
   tab <- tab[-1]
   for( arm in unique( bands$arm ) ) { # arm <- "1p"
     if( arm == "cen" ) next
@@ -39,9 +40,7 @@ getCNArmSummary <- function(segments, bandsFile){
       fracdel <- delbases / sum(currentsegm$end - currentsegm$start + 1)
     }
     newline <- c(arm, meancn, fracamp, fracdel)
-    tab <- rbindlist(list(tab, as.list(newline)))
-    
-  }
-  
-  tab  
+    tab <- rbindlist(list(tab, as.list(newline))) 
+  }  
+  return( tab )
 }

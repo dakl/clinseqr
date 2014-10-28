@@ -8,7 +8,7 @@ getCNArmSummary(segments, bandsFile)
 \arguments{
 \item{segments}{Data table with segments from qdnaseq.}
 
-\item{arms}{Data table with chromosome arms.}
+\item{bandsFile}{Path to cytobands.txt (see repo dakl/genome at github)}
 }
 \value{
 A summary table per chromosome arm
@@ -17,6 +17,6 @@ A summary table per chromosome arm
 Make a table of CN summary stats per chromosome arm
 }
 \examples{
-#getCNArmSummary(segments, bandsFile = "~/genome/cytobands.txt")
+#getCNArmSummary(segments, bandsFile = "cytobands.txt")
 }
 
