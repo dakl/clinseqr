@@ -30,10 +30,18 @@ genomeplot <- function(segments, chrsizes){
   #segments$state[which(segments$probgain  > probcutoff)]  <- "GAIN"
   #segments$state[which(segments$probamp   > probcutoff)]  <- "AMP"
 
+  segments$statef <- factor(segments$state, levels=c("DEL", "AMP", "NORMAL"))
+  
+  fill_scale <- scale_fill_manual(values=c('#D55E00','#0072B2', "#FFFFFF"), 
+                                  breaks=c("DEL", "AMP", "NORMAL"),
+                                  labels=c("DEL", "AMP", "NORMAL"), drop=FALSE)
+  col_scale  <- scale_color_manual(values=c('#D55E00','#0072B2', "#FFFFFF"), 
+                                   breaks=c("DEL", "AMP", "NORMAL"),
+                                   labels=c("DEL", "AMP", "NORMAL"), drop=FALSE)
+  
   ggplot(segments, aes(xmin=cumstart, xmax=cumend, ymin=0, 
-                         ymax=log2(segmented), colour=state, fill=state)) + 
-    geom_rect() + theme_bw() + scale_fill_manual(values=c('#D55E00','#0072B2', "000000")) +
-    scale_color_manual(values=c('#D55E00','#0072B2', "000000")) + 
+                         ymax=log2(segmented), colour=statef, fill=statef)) + 
+    geom_rect() + theme_bw() + fill_scale + col_scale +
     coord_cartesian(ylim = c(-1.5, 4)) + ylab("Log(T/N)") + xlab("Chromosome") + 
     geom_vline(xintercept=chrsizes$cumend, linetype="dotted", colour="gray50") + 
     geom_hline(yintercept=log2(c(1/2, 3/2, 4/2, 5/2, 6/2)), linetype="dotted", 
@@ -43,7 +51,5 @@ genomeplot <- function(segments, chrsizes){
     ggtitle("Copy Number Profile") + 
     geom_segment(aes(x = 0, y = 0, xend = 2881033286, yend = 0), 
                  size=.2, colour="gray10")
-  #annotate("text", x=max(segments$cumend)+1e7, y=log2(c(1/2, 3/2, 4/2, 5/2, 6/2)), 
-  #           label=c("1", "3", "4", "5", "6"))
 }
 
