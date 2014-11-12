@@ -32,6 +32,11 @@ genomeplot <- function(segments, chrsizes){
 
   segments$statef <- factor(segments$state, levels=c("DEL", "AMP", "NORMAL"))
   
+  ## set "NORMAL" regions to have a log2 ratio of 8. 
+  segments$log2ratio <- log2(segments$segmented)
+  segments$log2ratio[which(segments$state == "NORMAL")] <- 0
+  
+  ## setup color scales
   fill_scale <- scale_fill_manual(values=c('#D55E00','#0072B2', "#FFFFFF"), 
                                   breaks=c("DEL", "AMP", "NORMAL"),
                                   labels=c("DEL", "AMP", "NORMAL"), drop=FALSE)
@@ -39,12 +44,9 @@ genomeplot <- function(segments, chrsizes){
                                    breaks=c("DEL", "AMP", "NORMAL"),
                                    labels=c("DEL", "AMP", "NORMAL"), drop=FALSE)
   
-  ## set "NORMAL" regions to have a log2 ratio of 8. 
-  segments$log2ratio <- log2(segments$segmented)
-  segments$log2ratio[which(segments$state == "NORMAL")] <- 0
-    
+  # plot it
   ggplot(segments, aes(xmin=cumstart, xmax=cumend, ymin=0, 
-                         ymax=log2ratio, fill=statef)) + 
+                         ymax=log2ratio, fill=statef, colour=statef)) + 
     geom_rect() + theme_bw() + fill_scale + col_scale +
     coord_cartesian(ylim = c(-1.5, 4)) + ylab("Log(T/N)") + xlab("Chromosome") + 
     geom_vline(xintercept=chrsizes$cumend, linetype="dotted", colour="gray50") + 
