@@ -5,7 +5,7 @@
 #' @examples
 #' #dat <- getSailfishMetrics(reports)
 getSailfishMetrics <- function(reports){
-  metrics <- makeEmptyDataTable(header = c("Statistic"))
+  metrics <- makeEmptyDataTable(header = c("Metric"))
   for(k in 1:nrow(reports)){ #k <- 3
     infile   <- paste(reports$prefix[k] ,reports$SailfishMetrics[k],sep="/")
     if(file.exists(infile)){
