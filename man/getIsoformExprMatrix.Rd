@@ -3,7 +3,7 @@
 \alias{getIsoformExprMatrix}
 \title{Get isoform expression from sailfish output}
 \usage{
-getIsoformExprMatrix(reports, columnToUse = "KPKM")
+getIsoformExprMatrix(reports, columnToUse = "EstimatedNumKmers")
 }
 \arguments{
 \item{reports}{data frame with reports}
