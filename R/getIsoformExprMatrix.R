@@ -6,7 +6,7 @@
 #' @examples
 #' #dat <- getIsoformExprMatrix(reports)
 #' #dat <- getIsoformExprMatrix(reports, columnToUse="TPM")
-getIsoformExprMatrix <- function(reports, columnToUse="KPKM"){
+getIsoformExprMatrix <- function(reports, columnToUse="EstimatedNumKmers"){
   
   quant <- makeEmptyDataTable(header = c("ENST", "Length"))
   for(k in 1:nrow(reports)){ #k <- 3
