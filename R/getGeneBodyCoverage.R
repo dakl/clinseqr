@@ -5,10 +5,10 @@
 #' @examples
 #' # dat <- getGeneBodyCoverage(reports)
 #' # ggplot(dat, aes(x=NORM_POS, y=NORM_COV, colour=DataReportID)) + geom_line()
-getGeneBodyCoverage <- function(reports){
+getGeneBodyCoverage <- function(reports,src="StarRNASeqMetrics"){
   dat <- makeEmptyDataTable(c("NORM_POS", "NORM_COV", "DataReportID"))
   for(k in 1:nrow(reports)){ #k <- 3
-    infile   <- paste(reports$prefix[k] ,reports$StarRNASeqMetrics[k],sep="/")
+    infile   <- paste(reports$prefix[k] ,reports[k,src],sep="/")
     
     if(file.exists(infile)){
       cmd <- paste("grep -A 101 normalized_position", infile)
@@ -22,3 +22,4 @@ getGeneBodyCoverage <- function(reports){
   }
   dat
 }
+

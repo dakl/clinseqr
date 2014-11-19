@@ -3,10 +3,12 @@
 \alias{getRNAseqMetrics}
 \title{Get normalized gene body coverage for reports}
 \usage{
-getRNAseqMetrics(reports)
+getRNAseqMetrics(reports, src = "StarRNASeqMetrics")
 }
 \arguments{
 \item{reports}{data frame with reports}
+
+\item{src}{string with name of column name to use (from reports)}
 }
 \value{
 A data frame with normalized gene body coverage for all samples

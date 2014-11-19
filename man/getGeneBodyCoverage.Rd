@@ -3,7 +3,7 @@
 \alias{getGeneBodyCoverage}
 \title{Get normalized gene body coverage for reports}
 \usage{
-getGeneBodyCoverage(reports)
+getGeneBodyCoverage(reports, src = "StarRNASeqMetrics")
 }
 \arguments{
 \item{reports}{data frame with reports}
