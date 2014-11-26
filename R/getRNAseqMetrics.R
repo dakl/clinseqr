@@ -24,6 +24,7 @@ getRNAseqMetrics <- function(reports, src="StarRNASeqMetrics"){
       tb <- readM(infile)
     } else {
       tb <- data.table(t(rep(NA, length(myHeader))))
+      setnames(tb, names(tb), myHeader)
     }
     tb$DataReportID <- reports$DataReportID[k]
     dat <- rbindlist(list(dat, tb))  
