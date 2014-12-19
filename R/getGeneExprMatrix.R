@@ -14,16 +14,21 @@ getGeneExprMatrix <- function(reports){
       break
     }
   }
-  
+
+  numWithNoData = 0
   for(k in 1:nrow(reports)){ #k <- 3
     infile   <- paste(reports$prefix[k] ,reports$HtseqCountTable[k],sep="/")
     if(file.exists(infile)){
       tb <- fread(infile)
       quant[, eval(reports$DataReportID[k]):=tb$V2]
     }else{
-      quant[, eval(reports$DataReportID[k]):=NA ]
+      #quant[, eval(reports$DataReportID[k]):=NA ]
+      numWithNoData = numWithNoData + 1
     }
     dot(k, every=10)
+  }
+  if(numWithNoData > 0){
+    warning("No data could be found for ", numWithNoData, " sample(s).")
   }
   quant
 }
