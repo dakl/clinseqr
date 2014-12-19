@@ -27,7 +27,7 @@ getCNArmSummary <- function(segments, bandsFile){
     if( length(idx) > 0 ){
       currentsegm  <- segments[idx]
       ## calc mean copy num
-      meancn  <- mean( currentsegm$segmented, weight = currentsegm$end-segm$start )
+      meancn  <- mean( currentsegm$segmented, weight = currentsegm$end-segm$start, na.rm=TRUE )
       
       ## calc fraction amplified / gained bases
       idx.amp <- which( currentsegm$probamp + currentsegm$probgain > PROBCUTOFF )
