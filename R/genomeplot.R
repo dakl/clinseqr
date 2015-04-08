@@ -37,10 +37,10 @@ genomeplot <- function(segments, chrsizes){
   segments$log2ratio[which(segments$state == "NORMAL")] <- 0
   
   ## setup color scales
-  fill_scale <- scale_fill_manual(values=c('#D55E00','#0072B2', "#FFFFFF"), 
+  fill_scale <- scale_fill_manual(values=c('#0072B2','#D55E00', "#FFFFFF"), 
                                   breaks=c("DEL", "AMP", "NORMAL"),
                                   labels=c("DEL", "AMP", "NORMAL"), drop=FALSE)
-  col_scale  <- scale_color_manual(values=c('#D55E00','#0072B2', "#FFFFFF"), 
+  col_scale  <- scale_color_manual(values=c('#0072B2','#D55E00', "#FFFFFF"), 
                                    breaks=c("DEL", "AMP", "NORMAL"),
                                    labels=c("DEL", "AMP", "NORMAL"), drop=FALSE)
   
