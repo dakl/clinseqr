@@ -30,7 +30,7 @@ genomeplot <- function(segments, chrsizes){
   #segments$state[which(segments$probgain  > probcutoff)]  <- "GAIN"
   #segments$state[which(segments$probamp   > probcutoff)]  <- "AMP"
 
-  segments$statef <- factor(segments$state, levels=c("DEL", "AMP", "NORMAL"))
+  segments$statef <- factor(segments$state, levels=c("AMP", "DEL", "NORMAL"))
   
   ## set "NORMAL" regions to have a log2 ratio of 8. 
   segments$log2ratio <- log2(segments$segmented)
