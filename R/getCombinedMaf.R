@@ -11,7 +11,7 @@ getCombinedMaf <- function(reports){
   maf <- makeEmptyDataTable(mafHeader)
   
   for(k in 1:nrow(reports)){ #k <- 3
-    mafFile   <- paste(reports$prefix[k],reports$PANEL_SOMATIC_MAF[k],sep="")
+    mafFile   <- paste(reports$prefix[k],reports$PANEL_SOMATIC_MAF[k],sep="/")
     
     if(!file.exists(mafFile)){
       next
