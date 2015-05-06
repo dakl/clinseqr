@@ -10,7 +10,7 @@ getIsoformExprMatrix <- function(reports, columnToUse="EstimatedNumKmers"){
   
   quant <- makeEmptyDataTable(header = c("ENST", "Length"))
   for(k in 1:nrow(reports)){ #k <- 3
-    infile   <- paste(reports$prefix[k] ,reports$SailfishQuant[k],sep="/")
+    infile   <- paste(reports$prefix[k] ,reports$RNASEQ_SAILFISH[k],sep="/")
     if(file.exists(infile)){
       tb <- fread(infile)
       quant <- rbindlist(list(quant, data.table(tb$"# Transcript", tb$Length)))
@@ -19,12 +19,12 @@ getIsoformExprMatrix <- function(reports, columnToUse="EstimatedNumKmers"){
   }
   
   for(k in 1:nrow(reports)){ #k <- 3
-    infile   <- paste(reports$prefix[k] ,reports$SailfishQuant[k],sep="/")
+    infile   <- paste(reports$prefix[k] ,reports$RNASEQ_SAILFISH[k],sep="/")
     if(file.exists(infile)){
       tb <- fread(infile)
-      quant[, eval(reports$DataReportID[k]):=tb[,columnToUse, with=FALSE]]
+      quant[, eval(reports$REPORTID[k]):=tb[,columnToUse, with=FALSE]]
     }else{
-      quant[, eval(reports$DataReportID[k]):=NA ]
+      quant[, eval(reports$REPORTID[k]):=NA ]
     }
     dot(k, every=10)
   }

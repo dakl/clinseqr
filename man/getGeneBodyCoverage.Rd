@@ -3,7 +3,7 @@
 \alias{getGeneBodyCoverage}
 \title{Get normalized gene body coverage for reports}
 \usage{
-getGeneBodyCoverage(reports, src = "StarRNASeqMetrics")
+getGeneBodyCoverage(reports, src = "RNASEQ_RNASEQ_METRICS")
 }
 \arguments{
 \item{reports}{data frame with reports}
@@ -16,6 +16,6 @@ Get normalized gene body coverage for reports
 }
 \examples{
 # dat <- getGeneBodyCoverage(reports)
-# ggplot(dat, aes(x=NORM_POS, y=NORM_COV, colour=DataReportID)) + geom_line()
+# ggplot(dat, aes(x=NORM_POS, y=NORM_COV, colour=REPORTID)) + geom_line()
 }
 

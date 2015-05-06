@@ -7,7 +7,7 @@
 getGeneExprMatrix <- function(reports){
   quant <- makeEmptyDataTable(header = c("ENSG"))
   for(k in 1:nrow(reports)){ #k <- 3
-    infile   <- paste(reports$prefix[k] ,reports$HtseqCountTable[k],sep="/")
+    infile   <- paste(reports$prefix[k] ,reports$RNASEQ_HTSEQ[k],sep="/")
     if(file.exists(infile)){
       tb <- fread(infile)
       quant <- rbindlist(list(quant, data.table(tb$V1)))
@@ -17,12 +17,12 @@ getGeneExprMatrix <- function(reports){
 
   numWithNoData = 0
   for(k in 1:nrow(reports)){ #k <- 3
-    infile   <- paste(reports$prefix[k] ,reports$HtseqCountTable[k],sep="/")
+    infile   <- paste(reports$prefix[k] ,reports$RNASEQ_HTSEQ[k],sep="/")
     if(file.exists(infile)){
       tb <- fread(infile)
-      quant[, eval(reports$DataReportID[k]):=tb$V2]
+      quant[, eval(reports$REPORTID[k]):=tb$V2]
     }else{
-      #quant[, eval(reports$DataReportID[k]):=NA ]
+      #quant[, eval(reports$REPORTID[k]):=NA ]
       numWithNoData = numWithNoData + 1
     }
     dot(k, every=10)

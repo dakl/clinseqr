@@ -9,7 +9,7 @@
 getQDNAseq <- function(reports, columnToUse="segmented"){
   dat <- makeEmptyDataTable(header = c("chr", "start", "end", "gc", "mappability"))
   for(k in 1:nrow(reports)){ #k <- 3
-    infile   <- paste(reports$prefix[k] ,reports$QDNAseq[k],sep="/")
+    infile   <- paste(reports$prefix[k] ,reports$WGS_TUMOR_QDNASEQ[k],sep="/")
     if(file.exists(infile)){
       tb <- fread(infile)
       dat <- rbindlist(list(dat, data.table(tb$chromosome, tb$start, tb$end, tb$gc, tb$mappability)))
@@ -18,12 +18,12 @@ getQDNAseq <- function(reports, columnToUse="segmented"){
   }
   
   for(k in 1:nrow(reports)){ #k <- 3
-    infile   <- paste(reports$prefix[k] ,reports$QDNAseq[k],sep="/")
+    infile   <- paste(reports$prefix[k] ,reports$WGS_TUMOR_QDNASEQ[k],sep="/")
     if(file.exists(infile)){
       tb <- fread(infile)
-      dat[, eval(reports$DataReportID[k]) := tb[,columnToUse, with=FALSE ] ]
+      dat[, eval(reports$REPORTID[k]) := tb[,columnToUse, with=FALSE ] ]
     }else{
-      dat[, eval(reports$DataReportID[k]):=NA ]
+      dat[, eval(reports$REPORTID[k]):=NA ]
     }
     dot(k, every=10)
   }

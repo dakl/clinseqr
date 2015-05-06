@@ -3,7 +3,7 @@
 \alias{getOncofuse}
 \title{Get Oncofuse results}
 \usage{
-getOncofuse(reports)
+getOncofuse(reports, src = "RNASEQ_ONCOFUSE")
 }
 \arguments{
 \item{reports}{data frame with reports}
@@ -15,6 +15,6 @@ A data table with Oncofuse results
 Get Oncofuse results
 }
 \examples{
-#dat <- getOncofuse(reports, src="RNASeqCapHsMetrics")
+#dat <- getOncofuse(reports, src="RNASEQ_ONCOFUSE")
 }
 

@@ -8,7 +8,7 @@
 #' #ggplot(subset(dat, METRIC=="PCT_RIBOSOMAL_BASES"), 
 #' #       aes(x=DataReportID, y=VALUE, fill=DataReportID)) + 
 #' #geom_bar(stat="identity")
-getRNAseqMetrics <- function(reports, src="StarRNASeqMetrics"){
+getRNAseqMetrics <- function(reports, src="RNASEQ_RNASEQ_METRICS"){
   readM <- function(f){
     cmd <- paste("grep -A 2 RIBOSOMAL_BASES", f)
     dat <- read.table(pipe(cmd), header=TRUE, sep="\t", row.names=NULL, stringsAsFactors=FALSE)
@@ -26,7 +26,7 @@ getRNAseqMetrics <- function(reports, src="StarRNASeqMetrics"){
       tb <- data.table(t(rep(NA, length(myHeader))))
       setnames(tb, names(tb), myHeader)
     }
-    tb$DataReportID <- reports$DataReportID[k]
+    tb$REPORTID <- reports$REPORTID[k]
     dat <- rbindlist(list(dat, tb))  
   }
   dat

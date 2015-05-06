@@ -4,10 +4,10 @@
 #' @param src string with name of column name to use (from reports)
 #' @return A data table with hs metrics
 #' @examples
-#' #dat <- getHSMetrics(reports, src="RNASeqCapHsMetrics")
-#' #dat <- getHSMetrics(reports, src="TumorHsMetrics")
-#' #dat <- getHSMetrics(reports, src="NormalHsMetrics")
-getHSMetrics <- function(reports, src="RNASeqCapHsMetrics"){
+#' #dat <- getHSMetrics(reports, src="PANEL_TUMOR_HSMETRICS")
+#' #dat <- getHSMetrics(reports, src="PANEL_NORMAL_HSMETRICS")
+#' #dat <- getHSMetrics(reports, src="RNASEQCAP_HSMETRICS")
+getHSMetrics <- function(reports, src="PANEL_TUMOR_HSMETRICS"){
   readM <- function(f){
     cmd <- paste("grep -A 2 BAIT_SET", f)
     dat <- read.table(pipe(cmd), header=TRUE, sep="\t", row.names=NULL, stringsAsFactors=FALSE)
@@ -26,7 +26,7 @@ getHSMetrics <- function(reports, src="RNASeqCapHsMetrics"){
     } else { 
       tb <- data.table(t(rep(NA, length(hsHeader))))
     }
-    tb$DataReportID <- reports$DataReportID[k]
+    tb$REPORTID <- reports$REPORTID[k]
     dat <- rbindlist(list(dat, tb))  
   }
   dat

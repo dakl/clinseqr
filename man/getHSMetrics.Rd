@@ -3,7 +3,7 @@
 \alias{getHSMetrics}
 \title{Get HS Metrics}
 \usage{
-getHSMetrics(reports, src = "RNASeqCapHsMetrics")
+getHSMetrics(reports, src = "PANEL_TUMOR_HSMETRICS")
 }
 \arguments{
 \item{reports}{data frame with reports}
@@ -17,8 +17,8 @@ A data table with hs metrics
 Get HS Metrics
 }
 \examples{
-#dat <- getHSMetrics(reports, src="RNASeqCapHsMetrics")
-#dat <- getHSMetrics(reports, src="TumorHsMetrics")
-#dat <- getHSMetrics(reports, src="NormalHsMetrics")
+#dat <- getHSMetrics(reports, src="PANEL_TUMOR_HSMETRICS")
+#dat <- getHSMetrics(reports, src="PANEL_NORMAL_HSMETRICS")
+#dat <- getHSMetrics(reports, src="RNASEQCAP_HSMETRICS")
 }
 

@@ -3,7 +3,7 @@
 \alias{getMarkDupsMetrics}
 \title{Get MarkDups Metrics}
 \usage{
-getMarkDupsMetrics(reports, src = "RNASeqCapMarkDupMetrics")
+getMarkDupsMetrics(reports, src = "PANEL_MARKDUPS_METRICS")
 }
 \arguments{
 \item{reports}{data frame with reports}
@@ -17,8 +17,7 @@ A data table with metrics from markDuplicates
 Get MarkDups Metrics
 }
 \examples{
-#dat <- getHSMetrics(reports, src="RNASeqCapHsMetrics")
-#dat <- getHSMetrics(reports, src="TumorHsMetrics")
-#dat <- getHSMetrics(reports, src="NormalHsMetrics")
+#dat <- getMarkDupsMetrics(reports, src="PANEL_MARKDUPS_METRICS")
+#dat <- getMarkDupsMetrics(reports, src="WGS_MARKDUPS_METRICS")
 }
 
