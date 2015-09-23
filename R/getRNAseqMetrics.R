@@ -23,8 +23,8 @@ getRNAseqMetrics <- function(reports, src="RNASEQ_RNASEQ_METRICS"){
     if(file.exists(infile)){
       tb <- readM(infile)
     } else {
-      tb <- data.table(t(rep(NA, length(myHeader))))
-      setnames(tb, names(tb), myHeader)
+      tb <- data.table(t(rep(NA, length(myHeader)-1)))
+      setnames(tb, names(tb), myHeader[-(length(myHeader)-1)])
     }
     tb$REPORTID <- reports$REPORTID[k]
     dat <- rbindlist(list(dat, tb))  
