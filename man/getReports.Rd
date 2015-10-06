@@ -4,7 +4,7 @@
 \alias{getReports}
 \title{Get a data frame with all reports found in path}
 \usage{
-getReports(path, recursive = TRUE, absolutepaths = FALSE, max)
+getReports(path, recursive = TRUE, absolutepaths = FALSE, max = 1e+06)
 }
 \arguments{
 \item{path}{Path to directory with reports.}

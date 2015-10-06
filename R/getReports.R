@@ -7,7 +7,7 @@
 #' @examples
 #' reports1 <- getReports(path="/proj/b2010040/private/clinseq/LAMLv6/", recursive=TRUE, absolutepaths=TRUE, max=10)
 #' reports2 <- getReports(path="/proj/b2010040/private/clinseq/bla/", recursive=TRUE, absolutepaths=TRUE, max=10)
-getReports <- function(path, recursive=TRUE, absolutepaths=FALSE, max){
+getReports <- function(path, recursive=TRUE, absolutepaths=FALSE, max=1e6){
   ## get list of all report files
   reportFiles <- dir(path = path, pattern="report$", recursive=recursive)
   if(length(reportFiles) == 0){ ## if there aren't any report files in path, return NULL
