@@ -42,16 +42,16 @@ getReports <- function(path, recursive=TRUE, absolutepaths=FALSE, max=1e6){
 #' @param absolutepaths Boolean whether or not to make paths absolute paths instead of relative (default FALSE)
 #' @return A data frame with the report
 #' @examples
-#' report <- getReports(path="/proj/b2010040/private/clinseq/LAMLv6/L1234/L1234.report", absolutepaths=TRUE)
+#' report <- getReport(report_file="/proj/b2010040/private/clinseq/BREASTv6/K19378/datareports//DataReport.DataReport_K19378T.report", absolutepaths=TRUE)
 getReport <- function(report_file, absolutepaths=FALSE){
   report <- fread(report_file)
   report$prefix <- dirname(report_file)
   if(absolutepaths){
-    for( n in 11:length(report)){
-      if(!is.na(report[n])){
-        report[n] <- paste(prefix[k], report[n], sep="/")
+    for( n in 11:ncol(report)){
+      if(!is.na( report[[names(report)[n]]] )){        
+        report[[names(report)[n]]] <- paste(dirname(report_file), report[[names(report)[n]]], sep="/")
       }
-    }        
+    }
   }
   return(report)
 }
