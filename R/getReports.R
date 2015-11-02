@@ -25,15 +25,8 @@ getReports <- function(path, recursive=TRUE, absolutepaths=FALSE, max=1e6){
         break
       }
       reportFile <- reportFiles[k]
-      report <- read.table(paste(path,reportFile, sep="/"), header=TRUE, stringsAsFactors=FALSE)
-      
-      if(absolutepaths){
-        for( n in 11:length(report)){
-          if(!is.na(report[n])){
-            report[n] <- paste(prefix[k], report[n], sep="/")
-          }
-        }        
-      }
+      report <- getReport(paste(path,reportFile, sep="/"), absolutepaths)
+        #read.table(, header=TRUE, stringsAsFactors=FALSE)
       
       report$prefix <- prefix[k]
       reports <- rbind(reports, report)
@@ -43,3 +36,22 @@ getReports <- function(path, recursive=TRUE, absolutepaths=FALSE, max=1e6){
   }
 }
 
+#' Get a data frame with a single report from a path
+#' 
+#' @param report_File path to .report file
+#' @param absolutepaths Boolean whether or not to make paths absolute paths instead of relative (default FALSE)
+#' @return A data frame with the report
+#' @examples
+#' report <- getReports(path="/proj/b2010040/private/clinseq/LAMLv6/L1234/L1234.report", absolutepaths=TRUE)
+getReport <- function(report_file, absolutepaths=FALSE){
+  report <- fread(report_file)
+  report$prefix <- dirname(report_file)
+  if(absolutepaths){
+    for( n in 11:length(report)){
+      if(!is.na(report[n])){
+        report[n] <- paste(prefix[k], report[n], sep="/")
+      }
+    }        
+  }
+  return(report)
+}

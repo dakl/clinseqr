@@ -1,2 +1,6 @@
 # library(devtools)
 # document()
+# library(clinseqr)
+# r <- getReports("/proj/b2010040/private/clinseq/BREASTv6/", max=5)
+# dim(r)
+# warnings()
